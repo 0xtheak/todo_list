@@ -1,0 +1,79 @@
+body {
+  background-color: lightgray;
+  font-family: sans-serif;
+}
+
+/*some custom variables for color and font size*/
+:root {
+	--footer-text-color: #554d4d;
+	--footer-text-size: 13px;
+}
+
+#todo-container {
+  max-width: 600px;
+  margin: 100px auto;
+  background-color: white;
+  padding: 20px 20px 0 20px;
+  border-radius: 8px;
+}
+
+/* Input section */
+#input-section {
+  display: flex;
+  align-items: center;
+  background-color: lightgray;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#input-section input[type="text"] {
+  height: 40px;
+  width: 100%;
+  font-family: montserrat;
+  background-color: lightgray;
+  border: none;
+  font-size: 25px;
+  outline: none;
+  padding-left: 10px;
+  flex-grow: 1;
+}
+
+.icons {
+  font-size: 25px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+}
+
+hr {
+  width: 100%;
+  opacity: 0.5;
+  margin: 20px 0;
+}
+
+#footer>div {
+	display: flex;
+	justify-content: space-between;
+}
+#footer>div p {
+	color: var(--footer-text-color);
+	font-size: var(--footer-text-size);
+}
+
+#middle>div {
+	display: flex;
+	justify-content: space-between;
+}
+
+#middle>div p {
+	color: var(--footer-text-color);
+	font-size: var(--footer-text-size);
+}
+#middle div p>i {
+	font-size: var(--footer-text-size);
+}

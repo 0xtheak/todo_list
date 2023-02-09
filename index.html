@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+  <title>ToDo App</title>
+</head>
+<body>
+  <div id="todo-container">
+    <!-- taking input todo items -->
+    <div id="input-section">
+      <i class="fa fa-file-text-o icons"></i>
+      <input id="todo-input" type="text" name="todo-items-name" placeholder="Type your todo item">
+      <i class="fa fa-plus-circle icons" id="plus-btn"></i>
+    </div>
+    <section id="middle">
+    	<div>
+    		<p><i class="fa fa-check"></i> &nbsp; Complete all tasks</p>
+    		<p>Clear completed</p>
+    	</div>
+    </section>
+    <hr>
+    <!-- todo items list -->
+    <ul id="todo-list">
+      <!-- todo items will be added here dynamically -->
+    </ul>
+    <hr>
+    <section id="footer">
+    	<div>
+    		<p><strong id="count">0</strong> tasks left</p>
+    		<p><strong>All</strong> Uncompleted Completed</p>
+    	</div>
+    </section>
+  </div>
+  <script src="https://kit.fontawesome.com/9381d3aeec.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+</html>
