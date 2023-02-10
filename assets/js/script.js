@@ -1,15 +1,62 @@
-"use strict"
+"use strict";
 let todoInput = document.getElementById("todo-input");
 let plusBtn = document.getElementById("plus-btn");
-plusBtn.style.visibility = "hidden";
+let todoList = document.getElementById("todo-list");
+let itemsList = ["Learn How to type", "Do exercise"];
 
+// print todo list
+function printItemsList() {
+	// clear previous items list 
+	todoList.innerHTML = '';
+	for (let i of itemsList) {
 
-function text(){
-	console.log('function has been called');
-	if(todoInput.value!=""){
-		plusBtn.style.visibility = "visible";
-		console.log(todoInput.value);
+		let li = document.createElement("li");
+	  	let input = document.createElement("input");
+	  	input.type = "checkbox";
+	  	input.id = "item" + itemsList.indexOf(i);
+	  	input.value = i;
+	  	let label = document.createElement("label");
+	  	label.htmlFor = "item" + itemsList.indexOf(i);
+	  	label.innerText = i;
+	  
+
+	  	li.appendChild(input);
+	  	li.appendChild(label);
+	  	todoList.appendChild(li);
 	}
 }
 
-document.addEventListener('change', text);
+
+if (todoInput.value.length > 0) {
+  	plusBtn.style.visibility = "visible";
+}else {
+  	plusBtn.style.visibility = "hidden";
+}
+
+// toggle plus btn in the input field
+function toggleBtnVisibility() {
+  if (todoInput.value.length > 0) {
+    plusBtn.style.visibility = "visible";
+  } else {
+    plusBtn.style.visibility = "hidden";
+  }
+}
+
+todoInput.addEventListener("input", toggleBtnVisibility);
+
+todoInput.addEventListener("keypress", (e) => {
+	if(e.key === 'Enter'){
+		let item = todoInput.value;
+		itemsList.push(item);
+		printItemsList();
+		console.log(itemsList);
+	}
+});
+plusBtn.addEventListener('click', (e)=> {
+	let item = todoInput.value;
+		itemsList.push(item);
+		printItemsList();
+		console.log(e);
+})
+
+printItemsList();
