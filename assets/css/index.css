@@ -9,6 +9,7 @@ body {
 	--footer-text-size: 13px;
 }
 
+/*Main container*/
 #todo-container {
   max-width: 600px;
   margin: 100px auto;
@@ -50,7 +51,7 @@ body {
 
 hr {
   width: 100%;
-  opacity: 0.5;
+  opacity: 0.4;
   margin: 20px 0;
 }
 
@@ -83,49 +84,31 @@ hr {
   text-decoration: none;
   list-style: none;
   margin-left: -40px;
-  font-size: 25px;
+  font-size: 30px;
   font-family: montserrat;
 }
 
-.round {
-  position: relative;
-}
-
-.round label {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 28px;
-}
-
-.round label:after {
-  border: 2px solid #fff;
-  border-top: none;
-  border-right: none;
-  content: "";
-  height: 6px;
-  left: 7px;
-  opacity: 0;
-  position: absolute;
-  top: 8px;
-  transform: rotate(-45deg);
-  width: 12px;
-}
-
-.round input[type="checkbox"] {
+/*delete icon*/
+.trash-icon {
+  font-size: 22px;
   visibility: hidden;
+  margin-right: 0px;
 }
 
-.round input[type="checkbox"]:checked + label {
-  background-color: #66bb6a;
-  border-color: #66bb6a;
+
+.todo-innner-container{
+  display: flex;
+  justify-content: space-between;
+}
+input[type="checkbox"] {
+  height: 25px;
+  width: 25px;
 }
 
-.round input[type="checkbox"]:checked + label:after {
-  opacity: 1;
+label{
+  font-family: 'Poppins', sans-serif;
+}
+
+input[type="checkbox"]:checked + label{
+  color: gray;
 }
