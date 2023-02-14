@@ -6,37 +6,44 @@ let count = document.getElementById("count");
 let deleteIcon = document.getElementsByClassName("trash-icon");
 let todoCheckboxes;
 let todoItemsList = document.getElementsByClassName("todo-innner-container");
-let itemsList = ["Learn How to type", "Do exercise", "Do read a chapter daily"];
+let checkedCount = 0;
+plusBtn.style.visibility = "hidden";
 
-// print todo list
+// todo list with their respected status, wheather it is completed or not
+let itemsList = [
+  { text: "Learn How to type", checked: false },
+  { text: "Do exercise", checked: false },
+  { text: "Do read a chapter daily", checked: false },
+];
+
 function printItemsList() {
-	// clear previous items list 
-	todoList.innerHTML = '';
-	count.innerText = itemsList.length;
-	for (let i of itemsList) {
-		let li = document.createElement("li");
-		li.innerHTML = `
-
-		<div class="todo-innner-container">
-			<div>
-			<input type="checkbox" id="item${itemsList.indexOf(i)}" >
-			<label for="item${itemsList.indexOf(i)}" class="todo-items-list">${i}</label>
-			</div>
-			<div>
-				<i class="fa fa-trash-o trash-icon" id="item${itemsList.indexOf(i)}"></i>
-			</div>
-		</div>`;
-		todoList.appendChild(li);
-	}
+  // clear previous items list 
+  todoList.innerHTML = '';
+  for (let item of itemsList) {
+    let radioItem;
+  	if(item.checked){
+  		checkedCount++;
+  		radioItem = `<input type="checkbox" checked id="item${itemsList.indexOf(item)}">`
+  	}else {
+  		radioItem = `<input type="checkbox" id="item${itemsList.indexOf(item)}">`
+  	}
+    let li = document.createElement("li");
+    li.innerHTML = `
+    <div class="todo-innner-container">
+      <div>
+        ${radioItem}
+        <label for="item${itemsList.indexOf(item)}" class="todo-items-list">${item.text}</label>
+      </div>
+      <div>
+        <i class="fa fa-trash-o trash-icon" id="item${itemsList.indexOf(item)}"></i>
+      </div>
+    </div>`;
+    todoList.appendChild(li);
+  }
+  todoCheckboxes = document.querySelectorAll("input[type='checkbox']");
+  count.innerText = itemsList.length - checkedCount;
 }
 
-if (todoInput.value.length > 0) {
-  	plusBtn.style.visibility = "visible";
-}else {
-  	plusBtn.style.visibility = "hidden";
-}
-
-// toggle plus btn in the input field
 function toggleBtnVisibility() {
   if (todoInput.value.length > 0) {
     plusBtn.style.visibility = "visible";
@@ -49,7 +56,7 @@ todoInput.addEventListener("input", toggleBtnVisibility);
 
 todoInput.addEventListener("keypress", (e) => {
 	if (e.key === 'Enter' && todoInput.value !== "") {
-		itemsList.push(todoInput.value);
+		itemsList.push({ text : todoInput.value, checked : false});
 		todoInput.value = "";
 		printItemsList();
 		toggleBtnVisibility();
@@ -86,6 +93,7 @@ function toggleAndDelete(){
       itemsList.splice(index, 1);
       printItemsList();
       toggleAndDelete();
+      updateCount();
     });
 
   }
@@ -93,19 +101,17 @@ function toggleAndDelete(){
 
 // update the tasks count
 function updateCount(){
-	let n = itemsList.length
 	for(let i=0; i<todoCheckboxes.length; i++){
 	if(todoCheckboxes[i].checked){
-		count.innerText = --n;
+		checkedCount++;
+		itemsList[i].checked = true;
 		}
 	}
+	count.innerText = itemsList.length - checkedCount;
+	checkedCount = 0;
 }
 
-// calling the pring todo items list
+// Initialization
 printItemsList();
-todoCheckboxes = document.querySelectorAll("input[type='checkbox']");
 toggleAndDelete();
-console.log(todoCheckboxes);
-document.addEventListener('click', ()=>{
-	updateCount();
-})
+document.addEventListener('click', updateCount);
