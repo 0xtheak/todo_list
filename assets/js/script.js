@@ -1,12 +1,13 @@
 "use strict";
+
 let todoInput = document.getElementById("todo-input");
 let plusBtn = document.getElementById("plus-btn");
 let todoList = document.getElementById("todo-list");
 let count = document.getElementById("count");
 let deleteIcon = document.getElementsByClassName("trash-icon");
-let todoCheckboxes;
 let todoItemsList = document.getElementsByClassName("todo-innner-container");
 let checkedCount = 0;
+let todoCheckboxes;
 plusBtn.style.visibility = "hidden";
 
 // todo list with their respected status, wheather it is completed or not
@@ -52,28 +53,25 @@ function toggleBtnVisibility() {
   }
 }
 
+// toggle the plusbtn when input field is not empty
 todoInput.addEventListener("input", toggleBtnVisibility);
 
 todoInput.addEventListener("keypress", (e) => {
 	if (e.key === 'Enter' && todoInput.value !== "") {
 		itemsList.push({ text : todoInput.value, checked : false});
 		todoInput.value = "";
-		printItemsList();
-		toggleBtnVisibility();
-		toggleAndDelete();
+		updateScreen();
 	}
 });
 plusBtn.addEventListener('click', (e)=> {
 	if(todoInput.value!= ""){
-			itemsList.push(todoInput.value);
+			itemsList.push({ text : todoInput.value, checked : false});
 			todoInput.value = "";
-			printItemsList();
-			toggleBtnVisibility();
-			toggleAndDelete();
-			updateCount();
+			updateScreen();
 	}
 });
 
+// delete button only appears when you hover the task
 function toggleAndDelete(){
   for (let i = 0; i < todoItemsList.length; i++) {
 
@@ -91,27 +89,44 @@ function toggleAndDelete(){
     lis.addEventListener('click', function(){
       let index = parseInt(lis.id.slice(-1));
       itemsList.splice(index, 1);
-      printItemsList();
-      toggleAndDelete();
-      updateCount();
+      updateScreen();
     });
 
   }
 }
 
+// return the current list length
+function currentItemsLength(){
+	return itemsList.length;
+}
+
 // update the tasks count
-function updateCount(){
-	for(let i=0; i<todoCheckboxes.length; i++){
-	if(todoCheckboxes[i].checked){
-		checkedCount++;
-		itemsList[i].checked = true;
-		}
-	}
-	count.innerText = itemsList.length - checkedCount;
-	checkedCount = 0;
+function updateCount() {
+  checkedCount = 0; // reset checkedCount to 0
+  for (let i = 0; i < todoCheckboxes.length; i++) {
+    if (todoCheckboxes[i].checked) {
+      checkedCount++;
+      itemsList[i].checked = true;
+    } else {
+      itemsList[i].checked = false;
+    }
+  }
+  // updating the count of remaining task
+  count.innerText = currentItemsLength() - checkedCount;
+}
+
+// update the screen after an operation
+function updateScreen(){
+	printItemsList();
+	toggleBtnVisibility();
+	toggleAndDelete();
+	updateCount();
 }
 
 // Initialization
 printItemsList();
 toggleAndDelete();
+
+
+// update the counts when the task completed
 document.addEventListener('click', updateCount);
