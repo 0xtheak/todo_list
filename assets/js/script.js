@@ -8,16 +8,23 @@ let deleteIcon = document.getElementsByClassName("trash-icon");
 let todoItemsList = document.getElementsByClassName("todo-innner-container");
 let checkedCount = 0;
 let todoCheckboxes;
-plusBtn.style.visibility = "hidden";
+if(todoInput.value!=''){
+	plusBtn.style.visibility = "visible";
+}else{
+	plusBtn.style.visibility = "hidden";
+}
+
 
 // todo list with their respected status, wheather it is completed or not
 let itemsList = [
   { text: "Learn How to type", checked: false },
   { text: "Do exercise", checked: false },
-  { text: "Do read a chapter daily", checked: false },
+  { text: "Create Todo app", checked: false },
 ];
 
 function printItemsList() {
+	// reset the count
+	checkedCount = 0;
   // clear previous items list 
   todoList.innerHTML = '';
   for (let item of itemsList) {

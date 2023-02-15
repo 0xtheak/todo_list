@@ -40,6 +40,21 @@ body {
   flex-grow: 1;
 }
 
+/*checkbox size*/
+input[type="checkbox"] {
+  height: 25px;
+  width: 25px;
+}
+
+label{
+  font-family: 'Poppins', sans-serif;
+}
+
+input[type="checkbox"]:checked + label{
+  color: gray;
+}
+
+/*icons in the input field*/
 .icons {
   font-size: 25px;
   text-align: center;
@@ -47,14 +62,18 @@ body {
   height: 50px;
   line-height: 60px;
   cursor: pointer;
+  position: relative;
+  top: 10px;
 }
 
+/*all the horizontal line*/
 hr {
   width: 100%;
   opacity: 0.4;
   margin: 20px 0;
 }
 
+/*footer of the container*/
 #footer>div {
 	display: flex;
 	justify-content: space-between;
@@ -65,6 +84,7 @@ hr {
 	font-size: var(--footer-text-size);
 }
 
+/*middle part of the container*/
 #middle>div {
 	display: flex;
 	justify-content: space-between;
@@ -100,15 +120,4 @@ hr {
   display: flex;
   justify-content: space-between;
 }
-input[type="checkbox"] {
-  height: 25px;
-  width: 25px;
-}
 
-label{
-  font-family: 'Poppins', sans-serif;
-}
-
-input[type="checkbox"]:checked + label{
-  color: gray;
-}
