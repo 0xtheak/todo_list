@@ -14,6 +14,15 @@ if(todoInput.value!=''){
 	plusBtn.style.visibility = "hidden";
 }
 
+let darkModeBtn = document.getElementById('dark-mode-btn');
+let body = document.body;
+
+darkModeBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+});
+
+
+
 
 // todo list with their respected status, wheather it is completed or not
 let itemsList = [
@@ -22,6 +31,7 @@ let itemsList = [
   { text: "Create Todo app", checked: false },
 ];
 
+// display the items list
 function printItemsList() {
 	// reset the count
 	checkedCount = 0;

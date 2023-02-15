@@ -17,3 +17,5 @@ Technologies Used
 Getting Started
 
 To get started with TodoApp, simply clone this repository to your local machine and you are good to go.
+
+Here are few screenshot of the application

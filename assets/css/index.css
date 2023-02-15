@@ -3,6 +3,11 @@ body {
   font-family: sans-serif;
 }
 
+.dark-mode {
+  background-color: #222;
+}
+
+
 /*some custom variables for color and font size*/
 :root {
 	--footer-text-color: #554d4d;
