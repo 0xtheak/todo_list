@@ -17,5 +17,8 @@ Technologies Used
 Getting Started
 
 To get started with TodoApp, simply clone this repository to your local machine and you are good to go.
+    git clone https://github.com/0xtheak/todo_list.git
 
-Here are few screenshot of the application
+Here are few screenshots of the application
+
+![Screenshot_2023-02-15_11_57_43](https://user-images.githubusercontent.com/76566840/218964366-f6169d88-33fa-419b-8a43-42ad12288b51.png)
