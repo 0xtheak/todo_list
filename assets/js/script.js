@@ -14,15 +14,17 @@ if(todoInput.value!=''){
 	plusBtn.style.visibility = "hidden";
 }
 
+let isDarkMode;
 let darkModeBtn = document.getElementById('dark-mode-btn');
 let body = document.body;
 
 darkModeBtn.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
+  // body.classList.toggle('dark-mode');
+  isDarkMode = !isDarkMode;
+  // make the toggle mode persistant using storing the data in localstorage
+  localStorage.setItem("isDarkMode", isDarkMode);
+  toggleBackground(isDarkMode);
 });
-
-
-
 
 // todo list with their respected status, wheather it is completed or not
 let itemsList = [
@@ -140,6 +142,15 @@ function updateScreen(){
 	updateCount();
 }
 
+// toggle background
+function toggleBackground(isDarkMode){
+	if(isDarkMode){
+  	body.style.backgroundColor = "#222";
+  }else {
+  	body.style.backgroundColor = "lightgray"
+  }
+}
+
 // Initialization
 printItemsList();
 toggleAndDelete();
@@ -147,3 +158,11 @@ toggleAndDelete();
 
 // update the counts when the task completed
 document.addEventListener('click', updateCount);
+
+window.addEventListener("load", () => {
+  const storedValue = localStorage.getItem("isDarkMode");
+  if (storedValue !== null) {
+    isDarkMode = JSON.parse(storedValue);
+    toggleBackground(isDarkMode);
+  }
+});
