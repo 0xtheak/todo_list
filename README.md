@@ -22,4 +22,5 @@ To get started with TodoApp, simply clone this repository to your local machine 
 
 Here are few screenshots of the application
 
-![Screenshot_2023-02-15_11_57_43](https://user-images.githubusercontent.com/76566840/218964366-f6169d88-33fa-419b-8a43-42ad12288b51.png)
+![Screenshot_2023-02-16_10_34_50](https://user-images.githubusercontent.com/76566840/219273501-728c1402-0399-4d3b-bbf8-bc2ea8787ac2.png)
+
