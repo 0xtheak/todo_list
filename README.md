@@ -5,7 +5,6 @@ TodoApp is a simple and intuitive task management tool designed to help you stay
 Features
 
     Create tasks and to-dos
-    Organize tasks by projects and tags for better categorization
     View tasks in a simple list 
     Mark tasks as complete, or delete them when no longer needed
     Dark mode option for easier viewing in low-light environments
